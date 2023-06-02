@@ -1,0 +1,14 @@
+---
+version: '3.9'
+services:
+  pg:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: inventario
+      POSTGRES_USER: root
+      POSTGRES_DB: inventario
+    volumes:
+       - ./inventario.sql:/docker-entrypoint-initdb.d/inventario.sql
+    command: ["postgres", "-c", "log_statement=all", "-c", "log_destination=stderr"]
