@@ -1,0 +1,13 @@
+---
+version: '3.8'
+services:
+  mysql:
+    image: mysql:8
+    ports:
+      - 3306:3306
+    volumes:
+      - ./escuela.sql:/docker-entrypoint-initdb.d/escuela.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: escuela
+      MYSQL_DATABASE: escuela
+    command: ['--wait-timeout=1500000']
